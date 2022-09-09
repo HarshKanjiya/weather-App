@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Details from './component/wether-details/wether-details.component';
+import WeatherSearch from './component/wether-search/wether-search.component';
+import { useContext } from 'react';
+import { dataContext } from './context/context';
 function App() {
+  const {weatherData} = useContext(dataContext);
+  
+  if(weatherData){
+    const weather = weatherData.current.condition.text;
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-box'>
+
+      <div className="App">
+        <Details/>
+        <WeatherSearch/>
+      </div>
     </div>
   );
 }
